@@ -1,9 +1,4 @@
-/*
-  @format
-  @flow strict-local
-*/
 'use strict';
-import * as React from 'react';
 import {useRef} from 'react';
 import {Animated} from 'react-native';
 

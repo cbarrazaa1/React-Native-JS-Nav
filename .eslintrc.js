@@ -3,12 +3,7 @@ module.exports = {
   env: {
     browser: true,
   },
-  plugins: ['react', 'react-native'],
-  extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:flowtype/recommended',
-  ],
+  plugins: ['react', 'react-native', 'prettier', 'flowtype'],
   rules: {
     'no-unused-vars': 0,
   },

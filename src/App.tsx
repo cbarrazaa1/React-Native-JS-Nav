@@ -1,12 +1,8 @@
-/*
-  @format
-  @flow strict-local
-*/
 import * as React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
-import {Navigator, type ScreenProps} from './Navigator';
+import {StyleSheet, Text, View} from 'react-native';
+import {Navigator, ScreenProps} from './Navigator';
 
-function Screen1({navigation}: ScreenProps): React.Node {
+function Screen1({navigation}: ScreenProps): JSX.Element {
   return (
     <View
       style={{
@@ -21,7 +17,7 @@ function Screen1({navigation}: ScreenProps): React.Node {
   );
 }
 
-function Screen2({navigation}: ScreenProps): React.Node {
+function Screen2({navigation}: ScreenProps): JSX.Element {
   return (
     <View
       style={{
@@ -50,8 +46,8 @@ const options = {
   ],
 };
 
-type Props = {||};
-function App(): React.Node {
+type Props = {};
+function App(): JSX.Element {
   return <Navigator options={options} />;
 }
 

@@ -4,7 +4,11 @@ import {useEffect, useRef, useState} from 'react';
 import {Animated, Dimensions, Easing, StyleSheet} from 'react-native';
 import {Screen, ScreenContainer} from 'react-native-screens';
 import {useAnimatedValue} from './Animation';
-import {useBackHandler, useScreenMap} from './NavigationUtil';
+import {
+  useBackHandler,
+  useScreenMap,
+  useNavigationStack,
+} from './NavigationUtil';
 
 export type ScreenProps = {
   navigation: NavigationProp;
@@ -16,7 +20,7 @@ export type ScreenConfig = {
 };
 
 export type NavigatorOptions = {
-  screens: ReadonlyArray<ScreenConfig>;
+  screens: ScreenConfig[];
   initialScreenName: string;
 };
 
@@ -37,14 +41,13 @@ type Props = {
 
 export function Navigator({options}: Props): JSX.Element {
   const screenMap = useScreenMap(options);
-  const [navigationStack, setNavigationStack] = useState<
-    ReadonlyArray<ScreenConfig>
-  >([screenMap[options.initialScreenName]]);
+  const [navigationStack, setNavigationStack, stackRef] = useNavigationStack([
+    screenMap[options.initialScreenName],
+  ]);
   const [transitionState, setTransitionState] = useState<TransitionState>(
     TransitionState.NONE
   );
   const transition = useAnimatedValue(0);
-  const stackRef = useRef(navigationStack);
 
   // override back action on android to pop screen
   useBackHandler(pop);

@@ -1,5 +1,5 @@
 'use strict';
-import {useEffect, useRef} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {BackHandler} from 'react-native';
 import {NavigatorOptions, ScreenConfig} from './Navigator';
 
@@ -14,6 +14,18 @@ export function useScreenMap(options: NavigatorOptions): ScreenMap {
       {}
     )
   ).current;
+}
+
+export function useNavigationStack(
+  initialValue: ScreenConfig[]
+): [
+  ScreenConfig[],
+  React.Dispatch<React.SetStateAction<ScreenConfig[]>>,
+  React.MutableRefObject<ScreenConfig[]>
+] {
+  const [stack, setStack] = useState<ScreenConfig[]>(initialValue);
+  const ref = useRef(stack);
+  return [stack, setStack, ref];
 }
 
 export function useBackHandler(callback: () => void): void {

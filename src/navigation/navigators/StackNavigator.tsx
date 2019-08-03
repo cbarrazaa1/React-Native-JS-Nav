@@ -3,12 +3,12 @@ import * as React from 'react';
 import {useEffect, useRef, useState} from 'react';
 import {Animated, Dimensions, Easing, StyleSheet} from 'react-native';
 import {Screen, ScreenContainer} from 'react-native-screens';
-import {useAnimatedValue} from './Animation';
+import {useAnimatedValue} from '../../Animation';
 import {
   useBackHandler,
   useScreenMap,
   useNavigationStack,
-} from './NavigationUtil';
+} from './NavigatorUtil';
 
 export type ScreenProps = {
   navigation: NavigationProp;

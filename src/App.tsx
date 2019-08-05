@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {Navigator, ScreenProps} from './navigation/navigators/StackNavigator';
+import {Navigator} from './navigation/navigators/StackNavigator';
+import {ScreenProps} from './navigation/navigators/NavigatorUtil';
 
 function Screen1({navigation}: ScreenProps): JSX.Element {
   return (

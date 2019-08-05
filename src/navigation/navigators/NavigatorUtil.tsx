@@ -1,10 +1,29 @@
 'use strict';
 import {useEffect, useRef, useState} from 'react';
 import {BackHandler} from 'react-native';
-import {NavigatorOptions, ScreenConfig} from './StackNavigator';
 import {StrMap} from '../../TypeUtil';
 
 export type ScreenMap = StrMap<ScreenConfig>;
+
+export type NavigationProp = {
+  readonly push: (screenName: string) => void;
+  readonly pop: () => void;
+};
+
+export type ScreenProps = {
+  readonly navigation: NavigationProp;
+};
+
+export type ScreenConfig = {
+  readonly name: string;
+  readonly component: (props: ScreenProps) => JSX.Element;
+};
+
+export type NavigatorOptions = {
+  readonly screens: ScreenConfig[];
+  readonly initialScreenName: string;
+};
+
 export function useScreenMap(options: NavigatorOptions): ScreenMap {
   return useRef<ScreenMap>(
     options.screens.reduce((map: ScreenMap, screen: ScreenConfig) => {

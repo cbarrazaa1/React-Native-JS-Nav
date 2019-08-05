@@ -11,6 +11,7 @@ export function useNavigatorMap(options: ContainerOptions): NavigatorMap {
         map[navigator.name] = {
           name: navigator.name,
           component: navigator.component,
+          options: navigator.options,
         };
         return map;
       },

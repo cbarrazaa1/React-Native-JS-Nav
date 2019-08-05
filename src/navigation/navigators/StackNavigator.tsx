@@ -1,33 +1,16 @@
 'use strict';
 import * as React from 'react';
-import {useEffect, useRef, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {Animated, Dimensions, Easing, StyleSheet} from 'react-native';
 import {Screen, ScreenContainer} from 'react-native-screens';
 import {useAnimatedValue} from '../../Animation';
 import {
+  NavigatorOptions,
+  ScreenConfig,
   useBackHandler,
-  useScreenMap,
   useNavigationStack,
+  useScreenMap,
 } from './NavigatorUtil';
-
-export type ScreenProps = {
-  navigation: NavigationProp;
-};
-
-export type ScreenConfig = {
-  name: string;
-  component: (props: ScreenProps) => JSX.Element;
-};
-
-export type NavigatorOptions = {
-  screens: ScreenConfig[];
-  initialScreenName: string;
-};
-
-export type NavigationProp = {
-  push: (screenName: string) => void;
-  pop: () => void;
-};
 
 enum TransitionState {
   NONE,
